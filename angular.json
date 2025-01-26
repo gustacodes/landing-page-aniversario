@@ -10,10 +10,20 @@
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
+                "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "dir": "dist",
+            "branch": "gh-pages",
+            "message": "Deploy via Angular CLI",
+            "noJekyll": true
+          }
+        }
+        ,
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/page-aniversario",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
