@@ -1,0 +1,478 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@700&display=swap');
+
+:root{
+    --white: #af9797;
+    --dark1: #34344e;
+    --dark2: #3a415a;
+    --dark3: #c5a8a8;
+    --dark4: #89a7b1;
+    --dark5: #cbdad5;
+    --cyan1: #e38dcc;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--dark2);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--dark3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--dark4);
+}
+
+body{
+    font-family: 'Lato';
+}
+
+
+:is(button,.link-action){
+    padding: .6rem;
+    font-size: .9rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.btn-action{
+    background-color: transparent;
+    border: 1px solid var(--white);
+    color: var(--white);
+}
+
+.btn-action:hover{
+    background-color:  var(--white);
+    border: 1px solid var(--white);
+    color: white;
+}
+
+.link-action {
+    text-decoration: none;
+    width: 200px;
+    text-align: center;
+    margin: 0 auto; /* Centraliza o botão horizontalmente */
+    display: block; /* Permite aplicar o alinhamento no elemento */
+}
+
+section{
+    padding: 7.5rem;
+}
+
+.first-section {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    gap: 2rem;
+    min-height: 100vh; /* Faz com que a seção ocupe a altura total da tela */
+    flex-wrap: wrap;
+    background-image: url('https://acdn.mitiendanube.com/stores/923/643/products/20-jardim-encantado1-a823d4a73503d72ec216691419006318-1024-1024.jpg');
+    background-repeat: no-repeat; /* Impede a repetição da imagem */
+    background-size: cover; /* Faz a imagem ocupar toda a área */
+    background-position: center; /* Centraliza a imagem */
+}
+
+
+.first-section > div{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-width: 300px;
+}
+
+
+h1{
+    font-size: 4rem;
+    letter-spacing: 8px;
+    color: white;
+}
+
+strong{
+    color: var(--cyan1);
+}
+
+.first-section p{
+    color: var(--white);
+}
+
+
+.title{
+    color: var(--dark5);
+}
+
+.content {
+    background-color: #F8E3BB;
+    padding: 60px;
+    border-radius: 20px;
+    margin-bottom: 250px; /* Centraliza a div se houver espaço extra */
+    text-align: center; /* Centraliza o texto dentro da div */
+}
+
+.heading-with-icon {
+    display: inline-flex; /* Coloca imagem e texto na mesma linha */
+    align-items: center; /* Alinha verticalmente a imagem com o texto */
+    gap: 0.5rem; /* Espaço entre a imagem e o texto */
+}
+
+.img-profile {
+    width: 50px;
+    height: 50px;
+    object-fit: contain; /* Ajusta a imagem para caber nas dimensões */
+}
+
+/* Modal - oculto por padrão */
+.modal {
+    display: none; /* Inicia oculto */
+    position: fixed; /* Fica fixo na tela */
+    z-index: 1; /* Coloca o modal sobre outros elementos */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo escurecido */
+    padding-top: 100px; /* Espaço superior */
+    text-align: center;
+    opacity: 0; /* Inicialmente invisível */
+    visibility: hidden; /* Inicialmente invisível */
+    transition: opacity 0.5s ease, visibility 0s linear 0.5s; /* Efeito suave */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #F8E3BB; /* Cor de fundo do modal */
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 400px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    transform: translateY(-50px); /* Começa levemente acima */
+    transition: transform 0.5s ease; /* Efeito suave */
+}
+
+/* Modal visível */
+.modal.show {
+    display: block;
+    opacity: 1; /* Torna o modal visível */
+    visibility: visible; /* Torna o modal visível */
+}
+
+.modal.show .modal-content {
+    transform: translateY(0); /* Animação suave de entrada */
+}
+
+/* Fechar (X) */
+.close {
+    color: var(--white); /* Cor escura para o 'X' */
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: var(--cyan1); /* Cor para o hover */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* Título e texto */
+.modal h2 {
+    color: var(--white); /* Cor do título */
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.modal p {
+    color: var(--white); /* Cor do texto */
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Input de texto */
+.modal input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 1rem 0;
+    border: 1px solid var(--dark3);
+    border-radius: 6px;
+    font-size: 1rem;
+    color: var(--dark1);
+    background-color: white; /* Muda o fundo para branco */
+    text-align: center;
+}
+
+.modal input[type="text"]:focus {
+    text-align: center;
+    border-color: var(--cyan1);
+    outline: none;
+    background-color: #f4f4f4; /* Cor de fundo ao focar (opcional) */
+}
+
+#contador {
+    font-size: 2rem;
+    color: #333;
+}
+
+/* Estilo para o botão de ação */
+.modal .link-action {
+    text-decoration: none;
+    background-color: var(--dark3);
+    padding: 10px 15px;
+    border-radius: 6px;
+    color: white;
+    font-size: 1rem;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.modal .link-action:hover {
+    background-color: var(--white);
+}
+
+/* Responsividade para dispositivos menores */
+@media (max-width: 600px) {
+    .modal-content {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .modal h2 {
+        font-size: 1.5rem;
+    }
+
+    .modal p {
+        font-size: 0.9rem;
+    }
+
+    .modal input[type="text"] {
+        padding: 8px;
+    }
+
+    .modal .link-action {
+        font-size: 0.9rem;
+    }
+}
+
+
+/* Reset básico */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+/* Ajustes principais para responsividade */
+.first-section {
+    padding: 5rem 2rem; /* Ajusta o padding para telas menores */
+    flex-direction: column; /* Alinha os itens em coluna em telas pequenas */
+}
+
+.content {
+    padding: 2rem; /* Reduz o padding para telas pequenas */
+    margin-bottom: 2rem; /* Reduz o espaçamento em telas pequenas */
+    width: 100%; /* Garante que o conteúdo ocupe a largura total */
+    max-width: 400px; /* Limita a largura do conteúdo */
+}
+
+/* Ajuste do título com ícone */
+.heading-with-icon {
+    gap: 1rem; /* Espaçamento ajustável entre a imagem e o texto */
+}
+
+.img-profile {
+    width: 40px; /* Reduz o tamanho da imagem para telas menores */
+    height: 40px;
+}
+
+/* Tamanho do texto responsivo */
+h1 {
+    font-size: 2.5rem; /* Diminui o tamanho do texto em telas pequenas */
+    letter-spacing: 4px; /* Ajusta o espaçamento entre letras */
+}
+
+h2 {
+    font-size: 1.5rem; /* Ajusta o tamanho do subtítulo */
+}
+
+/* Botão responsivo */
+.link-action {
+    width: 100%; /* O botão ocupa a largura total */
+    max-width: 200px; /* Limita o tamanho máximo */
+    padding: 0.8rem; /* Tamanho confortável para toque */
+}
+
+/* Media query para telas menores (ex.: smartphones) */
+@media (max-width: 768px) {
+    .first-section {
+        padding: 3rem 1rem;
+    }
+
+    .content {
+        padding: 1.5rem;
+        border-radius: 10px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    .img-profile {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+/* Media query para telas muito pequenas (ex.: smartphones antigos) */
+@media (max-width: 480px) {
+    .content {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1rem;
+    }
+}
+
+#contador {
+    font-family: Arial, sans-serif;
+    font-size: 1.5rem;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .tempo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .valor {
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: #f9c6c6;
+    padding: 0.5rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    min-width: 3rem;
+    text-align: center;
+  }
+  
+  .unidade {
+    font-size: 0.9rem;
+    color: #fff;
+    margin-top: 0.2rem;
+  }
+  
+  .separador {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ebafaf;
+    padding-top: 5px;
+  }
+  
+  .msg-contagem {
+    color: #e1afaf;
+    font-weight: bold;
+  }
+
+  .titulo {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    font-family: 'Pacifico', cursive; /* Fonte decorativa de festa */
+    font-size: 60px;
+    color: #ff6347; /* Tom vibrante de laranja */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(45deg, #f39c12, #e6a9ff, #1abc9c);
+    -webkit-background-clip: text;
+    color: transparent;
+    margin: 0;
+    padding-top: 30px; /* Espaço acima do título */
+    opacity: 0; /* Começa invisível */
+    transform: translateY(-50px); /* Inicia a animação um pouco acima */
+    transition: opacity 1s ease-out, transform 1s ease-out; /* Transição suave */
+}
+
+/* Adiciona o efeito de animação após o carregamento da página */
+.titulo.aparecer {
+    opacity: 1; /* Torna o título visível */
+    transform: translateY(0); /* Move o título para sua posição normal */
+}
+
+/* Você pode usar esse efeito diretamente ao carregar a página com JavaScript. */
+
+
+.content-second {
+    background-color: #F8E3BB;
+    padding: 40px;
+    border-radius: 20px;
+    margin-top: 40px; /* Adiciona espaço entre o título e o conteúdo */
+    text-align: center; /* Centraliza o texto dentro da div */
+    opacity: 0; /* Começa invisível */
+    transform: translateY(-50px); /* Inicia a animação um pouco acima */
+    transition: opacity 1s ease-out, transform 1s ease-out; /* Transição suave */
+}
+
+.content-second.aparecer-second {
+    opacity: 1; /* Torna o título visível */
+    transform: translateY(0); /* Move o título para sua posição normal */
+}
+
+.second-section {
+    display: flex;
+    flex-direction: column; /* Organiza os itens de forma vertical */
+    justify-content: flex-start; /* Alinha os itens no início (topo) */
+    align-items: center; /* Centraliza os itens horizontalmente */
+    gap: 2rem;
+    min-height: 100vh; /* Ocupa toda a altura da tela */
+    background-image: url('https://acdn.mitiendanube.com/stores/956/391/products/florais-boho-jardim-encantado-21-1ddb565a10d9f468be16686453589293-1024-1024.jpg');
+    background-repeat: no-repeat; /* Impede a repetição da imagem */
+    background-size: cover; /* Faz a imagem ocupar toda a área */
+    background-position: center; /* Centraliza a imagem */
+}
+
+
+.second-section > div {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-width: 300px;
+}
+
+.content-second p {
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Pacifico', cursive;
+    font-size: 25px;
+    color:var(--cyan1);
+}
