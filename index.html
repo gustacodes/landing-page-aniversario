@@ -21,12 +21,52 @@
                 
                 <h2 style="color: #af9797;"> Eu sou a <strong>Maria Helena</strong></h2>
                 <p>Estou completando 1 aninho no dia <strong>16</strong> de fevereiro.</p>
-                <a href="#contact" class="btn-action link-action" >Entrar</a>                
-            </div>
+        
+                <a href="#contact" id="abrirModal" class="btn-action link-action">Convite</a>     
                 
+                <div id="modal" class="modal">
+                    <div class="modal-content">
+                        <span id="closeModal" class="close">&times;</span>
+                        <h2>Bem-vindo!</h2>
+                        <p>Insira o código de convite</p>
+                        <input type="text" id="codigoConvite" placeholder="YTCXFC45" />
+                        <a href="#contact" class="btn-action link-action" id="entrarBtn">Entrar</a>
 
+                    </div>
+                </div>
+                
+            </div>
+            <div id="contador"></div>
         </section>
-           
+      
 </body>
+<script>
+    function atualizarContador() {
+        const hoje = new Date();
+        const eventoData = new Date(hoje.getFullYear(), 1, 16); // 16 de fevereiro do ano atual
 
+        // Se a data já passou, usa o próximo ano
+        if (hoje > eventoData) {
+            eventoData.setFullYear(hoje.getFullYear() + 1);
+        }
+
+        const diferenca = eventoData - hoje; // Diferença em milissegundos
+
+        // Calcula os valores para dias, horas, minutos e segundos
+        const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+        const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+        // Atualiza o conteúdo do contador
+        const contador = document.getElementById('contador');
+        contador.innerHTML = `${dias} dias, ${horas} horas, ${minutos} minutos, ${segundos} segundos`;
+
+        // Chama a função novamente a cada segundo
+        setTimeout(atualizarContador, 1000);
+    }
+
+    // Inicia o contador
+    atualizarContador();
+</script>
 </html>
