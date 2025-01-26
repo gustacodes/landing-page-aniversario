@@ -34,39 +34,69 @@
 
                     </div>
                 </div>
-                
+                <span class="msg-contagem">CONTEM REGRESSIVA 🥳</span>
+                <div id="contador">
+                    <div class="tempo">
+                      <span class="valor dia">00</span>
+                      <div class="separador">DIAS</div>                      
+                    </div>
+                    <div class="separador">:</div>
+                    
+                    <div class="tempo">
+                      <span class="valor hora">00</span>
+                      <div class="separador">HORAS</div>
+                    </div>
+                    <div class="separador">:</div>
+                    <div class="tempo">
+                      <span class="valor minuto">00</span>
+                      <div class="separador">MIN.</div>
+                    </div>
+                    <div class="separador">:</div>
+                    
+                    <div class="tempo">
+                      <span class="valor segundo">00</span>
+                      <div class="separador">SEG.</div>
+                    </div>
+                  </div>
+                  
             </div>
-            <div id="contador"></div>
+            
         </section>
       
 </body>
 <script>
-    function atualizarContador() {
-        const hoje = new Date();
-        const eventoData = new Date(hoje.getFullYear(), 1, 16); // 16 de fevereiro do ano atual
+  function iniciarContador() {
+  const destino = new Date("2025-02-16T00:00:00"); // Data e hora alvo
+  const contador = document.getElementById("contador");
 
-        // Se a data já passou, usa o próximo ano
-        if (hoje > eventoData) {
-            eventoData.setFullYear(hoje.getFullYear() + 1);
-        }
+  function atualizarContador() {
+    const agora = new Date();
+    const diferenca = destino - agora;
 
-        const diferenca = eventoData - hoje; // Diferença em milissegundos
-
-        // Calcula os valores para dias, horas, minutos e segundos
-        const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
-        const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
-        const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
-
-        // Atualiza o conteúdo do contador
-        const contador = document.getElementById('contador');
-        contador.innerHTML = `${dias} dias, ${horas} horas, ${minutos} minutos, ${segundos} segundos`;
-
-        // Chama a função novamente a cada segundo
-        setTimeout(atualizarContador, 1000);
+    if (diferenca <= 0) {
+      contador.innerHTML = "00:00:00:00"; // Caso o tempo expire
+      clearInterval(intervalo);
+      return;
     }
 
-    // Inicia o contador
-    atualizarContador();
+    const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
+    const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
+    const segundos = Math.floor((diferenca / 1000) % 60);
+
+    // Atualiza os valores no HTML
+    contador.querySelector(".dia").textContent = dias.toString().padStart(2, "0");
+    contador.querySelector(".hora").textContent = horas.toString().padStart(2, "0");
+    contador.querySelector(".minuto").textContent = minutos.toString().padStart(2, "0");
+    contador.querySelector(".segundo").textContent = segundos.toString().padStart(2, "0");
+  }
+
+  // Atualiza o contador a cada segundo
+  const intervalo = setInterval(atualizarContador, 1000);
+  atualizarContador(); // Atualiza imediatamente ao carregar
+}
+
+document.addEventListener("DOMContentLoaded", iniciarContador);
+
 </script>
 </html>
