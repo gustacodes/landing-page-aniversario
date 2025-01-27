@@ -1,9 +1,42 @@
 <section class="second-section">
+
     <div class="titulo">
         Aniversário de Maria Helena
     </div>
+
     <div class="content-second">        
-        <p>É com muito carinho que nós pais viemos convidar você e sua família dia <strong>16/02/2025</strong> a partir das <strong>16:00</strong> horas, término às <strong>20:00</strong> horas.</p>
+        <p>É com muito carinho que nós pais viemos convidar você e sua família dia <strong>16/02/2025</strong> a partir das <strong>15:30</strong> horas, término às <strong>20:00</strong> horas.</p>
         <p>A agradecer ao Senhor e comemorar 1° aninho de nossa filha <strong>Maria Helena</strong> na casa de festas <strong>VillaKids</strong>. Será uma tarde abençoada por Deus.</p>
     </div>
+
+    <div class="confirma">
+        Confirmar Presença
+    </div>
+
+    <button type="button" id="abrirModal" class="btn-action link-action" (click)="abrirModal()">Confirmar</button>
+
+        <!-- Modal -->
+        <div [ngClass]="{'modal': true, 'show': modalVisivel}" id="modal">
+        <div class="modal-content">
+            <span (click)="fecharModal()" id="closeModal" class="close">&times;</span>
+            <h2>Confirmar presença 🎈</h2>
+            <p>Insira os nomes das pessoas que comparecerão</p>
+            <p style="font-weight: 7px;">Ex: João, Maria, José...</p>
+            <input type="text" id="nomeConvidado" [(ngModel)]="nomeConvidado" />
+            <button class="btn-action link-action" id="entrarBtn" (click)="confirmarPresenca(nomeConvidado)">Confirmar</button>
+        </div>
+        </div>
+
+    <div class="localizacao">
+        Local
+    </div>
+
+    <div class="local">
+        <p>Villa Kids Buffet Infantil - R. Hercílio de Souza, 75 - Estância, Recife - PE, 50771-640</p>
+        <a href="https://maps.app.goo.gl/rrimRWfJgARtyQny9" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/256/2642/2642502.png" width="30" height="30" alt="Ícone de local" />
+        </a> 
+        <p>Maps</p>       
+        
+    </div>        
 </section>
