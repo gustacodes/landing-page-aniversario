@@ -452,10 +452,8 @@ h2 {
     min-height: 100vh; /* Ocupa toda a altura da tela */
     background-image: url('https://acdn.mitiendanube.com/stores/956/391/products/florais-boho-jardim-encantado-21-1ddb565a10d9f468be16686453589293-1024-1024.jpg');
     background-repeat: no-repeat; /* Impede a repetição da imagem */
-    background-size: cover; /* Faz a imagem ocupar toda a área */
     background-position: center; /* Centraliza a imagem */
 }
-
 
 .second-section > div {
     display: flex;
