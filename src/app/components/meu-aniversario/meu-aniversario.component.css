@@ -438,7 +438,7 @@ h2 {
 }
 
 .content-second.aparecer-second {
-    opacity: 1; /* Torna o conteúdo secundário visível */
+    opacity: 1;
     transform: translateY(0);
 }
 
